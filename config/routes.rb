@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :brands
-      resources :client_motorcycles
-      resources :emergency_contacts
-      resources :medical_informations
-      resources :states
-      resources :statuses
       resources :user_informations
+      resources :user_changes
       resources :users
-      resources :show_motorcycles
       resources :test
+      resources :contacts
+      resources :corporate_informations
+      resources :corporates 
+      resources :permissions
+      resources :property_informations
+      resources :property_users
+      resources :propieties
+      resources :status_disponibilities
+      resources :tenant_historys
+      resources :tenant_users
       devise_scope :user do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"
