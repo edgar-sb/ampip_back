@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :test
       resources :contacts
       resources :corporate_informations
-      resources :corporates 
+      resources :corporates
       resources :permissions
       resources :property_informations
       resources :property_users
