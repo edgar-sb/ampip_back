@@ -3,9 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :user_informations
       resources :user_changes
-      resources :users
       resources :test
-      resources :contacts
+      resources :contact
       resources :corporate_informations
       resources :corporates
       resources :permissions

@@ -1,7 +1,6 @@
 class Api::V1::CorporatesController < ApplicationController
     def index 
-        corporates = Corporate.all
-        render json: corporates, each_serializer: Api::V1::CorporatesSerializer
+        render json:{"s":"s"}
     end
 
     def show

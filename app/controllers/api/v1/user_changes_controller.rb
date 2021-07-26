@@ -1,7 +1,7 @@
 class Api::V1::UserChangesController < ApplicationController
 
     def index
-        userChanges = UserChanges.all
+        userChanges = UserChange.all
         render json: userChanges, each_serializer: Api::V1::UserChangesSerializer
     end
 

@@ -1,8 +1,7 @@
-class Api::V1::ContactsController < ApplicationController
+class Api::V1::ContactController < ApplicationController
 
     def index
-        contacts = Conctact.all
-        render json: contacts, each_serializer: Api::V1::ContactsSerializer
+        render json:{"Message":"Hello"}
     end
 
     def show

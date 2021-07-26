@@ -1,9 +1,8 @@
 class Api::V1::TestController < ApplicationController
 
-    def index        
-                
+    def index
         info = userChanges
-        render json: info, each_serializer: Api::V1::TenantUserSerializer
+        render json: {"Message":"HGOla"}
 
     end
 
@@ -63,6 +62,6 @@ class Api::V1::TestController < ApplicationController
 
     #probado y listo
     def userChanges
-        rerun UserChange.all
+        return UserChange.all
     end
 end
