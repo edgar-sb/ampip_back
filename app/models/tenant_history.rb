@@ -1,4 +1,4 @@
 class TenantHistory < ApplicationRecord
   belongs_to :property
-  has_many :tenant_users, dependent: :destroy
+  belongs_to :tenant_users
 end

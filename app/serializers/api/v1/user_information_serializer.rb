@@ -4,6 +4,7 @@ class Api::V1::UserInformationSerializer < Api::V1::ApplicationSerializer
               :full_name,
               :last_name,
               :address
+<<<<<<< HEAD
 
   #def photo
   #   if object.photo.attached?
@@ -12,3 +13,6 @@ class Api::V1::UserInformationSerializer < Api::V1::ApplicationSerializer
   #   }
   # end
 end 
+=======
+end
+>>>>>>> feature/services

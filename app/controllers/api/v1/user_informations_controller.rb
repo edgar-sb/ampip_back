@@ -1,15 +1,18 @@
 class Api::V1::UserInformationsController < ApplicationController
+<<<<<<< HEAD
   #before_action :authenticate_user!
+=======
+  before_action :session_user
+>>>>>>> feature/services
 
   def index
     user_info = UserInformation.all 
-    debugger
     render json: user_info, each_serializer: Api::V1::UserInformationSerializer
   end
 
   def create
-    if current_user.user_information.nil? 
-      user_info = UserInformation.new permit_params.merge(user_id:current_user.id)
+    if  @current_user.user_information.nil? 
+      user_info = UserInformation.new permit_params.merge(user_id:@current_user.id)
       if user_info.save
         render json: {
           status: "success",
@@ -24,8 +27,8 @@ class Api::V1::UserInformationsController < ApplicationController
         }, status: :unprocessable_entity
       end
     else
-      user_info = current_user.user_information.update(permit_params)
-      user_uodated = current_user.user_information
+      user_info = @current_user.user_information.update(permit_params)
+      user_uodated = @current_user.user_information
       if user_info
         render json: {
           status: "success",
@@ -43,11 +46,12 @@ class Api::V1::UserInformationsController < ApplicationController
   end
 
   private
+   
+  def session_user
+    @current_user=User.find_by(authentication_token:params[:authentication_token])
+  end
+
   def permit_params
-    params[:params][:values].permit(
-                                    :full_name,
-                                    :last_name,
-                                    :address,
-                                    )
+    params.require(:user_information).permit(:full_name, :last_name, :address)
   end
 end
