@@ -14,19 +14,6 @@ module Maps
 
         private 
 
-        def create
-
-
-
-
-
-
-
-
-
-            
-        end
-
         def getMaps
             map = Map.all
             return Map

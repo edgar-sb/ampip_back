@@ -1,11 +1,15 @@
 class Api::V1::TestController < ApplicationController
 
     def index
-        info = userChanges
-        render json: {"Message":"HGOla"}
-
+        dashboard = Dashboard::MainDashboard.new(rescue_params).call
+        render json:dashboard
     end
 
+    private 
+
+    def rescue_params
+        params.require(:rescue_type).permit(:user_type, :id)
+    end
     #provado y listo 
     def corporateX
         corps = Corporate.all

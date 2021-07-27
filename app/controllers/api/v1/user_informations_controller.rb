@@ -1,8 +1,9 @@
 class Api::V1::UserInformationsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
-    user_info = UserInformation.all
+    user_info = UserInformation.all 
+    debugger
     render json: user_info, each_serializer: Api::V1::UserInformationSerializer
   end
 
