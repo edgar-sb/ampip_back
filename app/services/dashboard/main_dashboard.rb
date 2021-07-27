@@ -45,15 +45,6 @@ module Dashboard
                 return "Sin datos aun"
             end
             
-        end
-
-
-        def rescue_tenants
-            if 
-                
-            end
-            
-        end
-      
+        end      
     end 
 end
