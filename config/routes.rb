@@ -6,9 +6,9 @@ Rails.application.routes.draw do
       resources :maps
       resources :users
       resources :test
-      resources :contacts
+      resources :contact
       resources :corporate_informations
-      resources :corporates 
+      resources :corporates
       resources :permissions
       resources :property_informations
       resources :property_users

@@ -6,11 +6,12 @@ class Api::V1::SessionsController < ApplicationController
   def create
     if @user.valid_password?(sign_in_params[:password])
       sign_in "user", @user
+      dashboard = Dashboard::MainDashboard.new(@user).call
       render json: {
         messages: "Signed In Successfully",
         is_success: true,
         is_client: @user.user_type,
-        data: {user: @user}
+        data: {user: @user, dashboard:dashboard}
       }, status: :ok
     else
       render json: {

@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_07_20_004659) do
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "PropertyInformation_id", null: false
+    t.integer "property_information_id", null: false
     t.string "name"
     t.integer "phone_number"
     t.string "website"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["PropertyInformation_id"], name: "index_contacts_on_PropertyInformation_id"
+    t.index ["property_information_id"], name: "index_contacts_on_property_information_id"
   end
 
   create_table "corporate_informations", force: :cascade do |t|
@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.string "social_media_inst"
     t.string "social_media_link"
     t.string "social_media_web"
-    t.integer "Corporate_id", null: false
+    t.integer "corporate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Corporate_id"], name: "index_corporate_informations_on_Corporate_id"
+    t.index ["corporate_id"], name: "index_corporate_informations_on_corporate_id"
   end
 
   create_table "corporates", force: :cascade do |t|
@@ -65,24 +65,24 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   end
 
   create_table "permissions", force: :cascade do |t|
-    t.integer "UserRolPermission_id", null: false
+    t.integer "user_rol_permission_id", null: false
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["UserRolPermission_id"], name: "index_permissions_on_UserRolPermission_id"
+    t.index ["user_rol_permission_id"], name: "index_permissions_on_user_rol_permission_id"
   end
 
   create_table "properties", force: :cascade do |t|
-    t.integer "Corporate_id", null: false
+    t.integer "corporate_id", null: false
     t.integer "property_catalog_id"
     t.integer "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Corporate_id"], name: "index_properties_on_Corporate_id"
+    t.index ["corporate_id"], name: "index_properties_on_corporate_id"
   end
 
   create_table "property_informations", force: :cascade do |t|
-    t.integer "Property_id", null: false
+    t.integer "property_id", null: false
     t.string "name"
     t.string "type"
     t.integer "superficie"
@@ -108,34 +108,36 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Property_id"], name: "index_property_informations_on_Property_id"
+    t.index ["property_id"], name: "index_property_informations_on_property_id"
   end
 
   create_table "property_users", force: :cascade do |t|
-    t.integer "User_id", null: false
-    t.integer "industrial_park_id"
+    t.integer "user_id", null: false
+    t.integer "property_id", null: false
     t.integer "type_property"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["User_id"], name: "index_property_users_on_User_id"
+    t.index ["property_id"], name: "index_property_users_on_property_id"
+    t.index ["user_id"], name: "index_property_users_on_user_id"
   end
 
   create_table "status_disponibilities", force: :cascade do |t|
-    t.integer "PropertyInformation_id", null: false
+    t.integer "property_information_id", null: false
     t.boolean "status_property"
     t.decimal "average_price"
     t.integer "use"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["PropertyInformation_id"], name: "index_status_disponibilities_on_PropertyInformation_id"
+    t.index ["property_information_id"], name: "index_status_disponibilities_on_property_information_id"
   end
 
   create_table "tenant_histories", force: :cascade do |t|
-    t.integer "Property_id", null: false
-    t.integer "tenant_user_id"
+    t.integer "property_id", null: false
+    t.integer "tenant_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Property_id"], name: "index_tenant_histories_on_Property_id"
+    t.index ["property_id"], name: "index_tenant_histories_on_property_id"
+    t.index ["tenant_user_id"], name: "index_tenant_histories_on_tenant_user_id"
   end
 
   create_table "tenant_users", force: :cascade do |t|
@@ -147,10 +149,8 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.integer "ID_DENUE"
     t.integer "antiquity"
     t.integer "superficie"
-    t.integer "TenantHistory_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["TenantHistory_id"], name: "index_tenant_users_on_TenantHistory_id"
   end
 
   create_table "user_changes", force: :cascade do |t|
@@ -193,10 +193,10 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.integer "permission_id"
     t.boolean "read"
     t.boolean "write"
-    t.integer "UserRol_id", null: false
+    t.integer "user_rol_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["UserRol_id"], name: "index_user_role_permissions_on_UserRol_id"
+    t.index ["user_rol_id"], name: "index_user_role_permissions_on_user_rol_id"
   end
 
   create_table "user_rols", force: :cascade do |t|
@@ -222,18 +222,19 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "contacts", "PropertyInformations"
-  add_foreign_key "corporate_informations", "Corporates"
-  add_foreign_key "permissions", "UserRolPermissions"
-  add_foreign_key "properties", "Corporates"
-  add_foreign_key "property_informations", "Properties"
-  add_foreign_key "property_users", "Users"
-  add_foreign_key "status_disponibilities", "PropertyInformations"
-  add_foreign_key "tenant_histories", "Properties"
-  add_foreign_key "tenant_users", "TenantHistories"
+  add_foreign_key "contacts", "property_informations"
+  add_foreign_key "corporate_informations", "corporates"
+  add_foreign_key "permissions", "user_rol_permissions"
+  add_foreign_key "properties", "corporates"
+  add_foreign_key "property_informations", "properties"
+  add_foreign_key "property_users", "properties"
+  add_foreign_key "property_users", "users"
+  add_foreign_key "status_disponibilities", "property_informations"
+  add_foreign_key "tenant_histories", "properties"
+  add_foreign_key "tenant_histories", "tenant_users"
   add_foreign_key "user_changes", "users"
   add_foreign_key "user_informations", "corporates"
   add_foreign_key "user_informations", "user_type_permisions"
   add_foreign_key "user_informations", "users"
-  add_foreign_key "user_role_permissions", "UserRols"
+  add_foreign_key "user_role_permissions", "user_rols"
 end

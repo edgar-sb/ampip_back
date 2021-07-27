@@ -1,3 +1,3 @@
 class TenantUser < ApplicationRecord
-    has_many :teant_histories
+    belongs_to :tenant_history
 end
