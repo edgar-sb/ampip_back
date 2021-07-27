@@ -1,4 +1,4 @@
-class Api::V1::Permission_Serializer < Api::V1::ApplicationSerializer
+class Api::V1::PermissionSerializer < Api::V1::ApplicationSerializer
     attributes  :id,
                 :UserRolPermission_id,
                 :name,

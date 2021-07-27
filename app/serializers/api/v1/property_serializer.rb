@@ -1,4 +1,4 @@
-class Api::V1::PropietiesSerializer < Api::V1::ApplicationSerializer
+class Api::V1::PropertySerializer < Api::V1::ApplicationSerializer
     attributes  :id,
                 :Corporate_id,
                 :property_catalog_id,

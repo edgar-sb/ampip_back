@@ -17,7 +17,7 @@ class Api::V1::MapsController < ApplicationController
     private 
     
     def permit_params 
-        params[:params].value(:id, :name, :lat, :lng, :details)
+        params.require(:maps).permit(:id, :name, :lat, :lng, :details)
     end
 
 end
