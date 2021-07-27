@@ -10,7 +10,7 @@ class Api::V1::TenantUsersController < ApplicationController
     end 
 
     def create
-        newTenantUser = TenantUser.new permit_params
+        newTenantUser = TenantUser.new
         if newTenantUser.save
             render json:{"message":"guardado"}
         else
