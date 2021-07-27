@@ -9,6 +9,6 @@ class Api::V1::CorporateInformationSerializer < Api::V1::ApplicationSerializer
                 :Corporate_id,
                 :created_at,
                 :updated_at
-                
+            
                 
 end

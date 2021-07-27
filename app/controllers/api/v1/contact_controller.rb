@@ -12,9 +12,9 @@ class Api::V1::ContactController < ApplicationController
         newContact = Contact.new permit_params
         if newContact.save
             render json:{"message":"guardado"}
-        else 
+        else
             render json:{"message":"error"}
-        end 
+        end
     end
 
     def destroy
@@ -26,7 +26,5 @@ class Api::V1::ContactController < ApplicationController
     def permit_params
          params[:params].value(:id, :name, :phone_number, :website, :PropertyInformation_id)
     end
-    
-    
-    
+
 end

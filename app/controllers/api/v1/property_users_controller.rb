@@ -1,8 +1,8 @@
 class Api::V1::PropertyUsersController < ApplicationController
 
     def index 
-        propertyusers = PropertyUser.all
-        render json: propertyusers, each_serializer: Api::V1::PropertyUsersSerializer
+      propertyUsers = PropertyUser.all
+      render json: propertyUsers, each_serializer: Api::V1::PropertyUserSerializer
     end
 
     def show
@@ -10,8 +10,8 @@ class Api::V1::PropertyUsersController < ApplicationController
     end
 
     def create 
-        newPropertyUser = PropertyUser.new permit_params
-        if newPropertyUser.save
+        newPropertyUsers = PropertyUser.new permit_params
+        if newPropertyUsers.save
             render json:{"message":"guardado"}
         else
             render json:{"message":"error"}
@@ -25,7 +25,7 @@ class Api::V1::PropertyUsersController < ApplicationController
     private
 
     def permit_params
-        params[:params],value( :id, :User_id, :industrial_park_id, :type_property, :created_at, :updated_at)
+        params.require(:property_user).permit(:id, :user_id, :industrial_park_id, :type_property)
     end
 
 end

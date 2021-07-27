@@ -1,8 +1,8 @@
-class Api::V1::PropertyInformationsControllee < ApplicationController
+class Api::V1::PropertyInformationsController < ApplicationController
 
     def index 
         propertyinformations = PropertyInformation.all
-        render json: propertyinformations, each_serializer: Api::V1::PropertyInformationsSerializer
+        render json: propertyinformations, each_serializer: Api::V1::PropertyInformationSerializer
     end
 
     def show
@@ -25,7 +25,7 @@ class Api::V1::PropertyInformationsControllee < ApplicationController
     private 
 
     def permit_params
-        params[:params],value(:id, :Property_id, :name, :type, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :created_at, :updated_at)
+        params.require(:property_information).permit(:id, :Property_id, :name, :type, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status)
     end
 
 end
