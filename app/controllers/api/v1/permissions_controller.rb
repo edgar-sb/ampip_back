@@ -1,8 +1,8 @@
-class Api::V1::PermissionController < ApplicationSerializer
+class Api::V1::PermissionsController < ApplicationController
     
     def index 
-        permissions = Corporate.all
-        render json: permissions, each_serializer: Api::V1::PermissionsSerializer
+        permissions = Permission.all
+        render json: permissions, each_serializer: Api::V1::PermissionSerializer
     end
 
     def show
@@ -10,11 +10,11 @@ class Api::V1::PermissionController < ApplicationSerializer
     end
 
     def create 
-        newPermission = Permission.new permit_params
+        newPermission =  Permission.new permit_params
         if newPermission.save
             render json:{"message":"guardado"}
         else
-            render json{"message":"error"}
+            render json:{"message":"error"}
         end
     end
 
@@ -25,7 +25,7 @@ class Api::V1::PermissionController < ApplicationSerializer
     private 
 
     def permit_params
-        params[:params],value(:id, :UserRolPermission_id, :name, :created_at, :updated_at)
+        params.require(:permission).permit(:id, :UserRolPermission_id, :name)
     end
 
 end

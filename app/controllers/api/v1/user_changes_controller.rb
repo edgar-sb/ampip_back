@@ -1,7 +1,7 @@
 class Api::V1::UserChangesController < ApplicationController
 
     def index
-        userChanges = UserChanges.all
+        userChanges = UserChange.all
         render json: userChanges, each_serializer: Api::V1::UserChangesSerializer
     end
 
@@ -10,7 +10,7 @@ class Api::V1::UserChangesController < ApplicationController
     end
 
     def create
-        newUserChanges = UserChanges.new permit_params
+        newUserChanges = UserChange.new permit_params
         if newUserChanges.save
             render json:{"message":"guardado"}
         else 
@@ -25,6 +25,6 @@ class Api::V1::UserChangesController < ApplicationController
     private
 
     def permit_params
-         params[:params].value( :id, :previews_value, :next_value)
+         params.require(:user_changes).permit( :id, :previews_value, :next_value)
     end  
 end

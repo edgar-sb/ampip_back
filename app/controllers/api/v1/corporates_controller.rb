@@ -1,7 +1,7 @@
 class Api::V1::CorporatesController < ApplicationController
     def index 
         corporates = Corporate.all
-        render json: corporates, each_serializer: Api::V1::CorporatesSerializer
+        render json: corporates, each_serializer: Api::V1::CorporateSerializer
     end
 
     def show
@@ -24,7 +24,7 @@ class Api::V1::CorporatesController < ApplicationController
     private
 
     def permit_params
-        params[:params],value( :id, :name, :english_name, :social_type, :address, :postal_code, :colony, :state, :municipality, :cel, :anual_invetsment, :previus_anual_inv, :next_anual_inv, :downt_date, :corporate_type, :status, :created_at)
+        params.require(:corporate).permit( :id, :name, :english_name, :social_type, :address, :postal_code, :colony, :state, :municipality, :cel, :anual_invetsment, :previus_anual_inv, :next_anual_inv, :downt_date, :corporate_type, :status)
     end
             
 end

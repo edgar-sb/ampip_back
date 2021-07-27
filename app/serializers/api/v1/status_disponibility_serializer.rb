@@ -1,4 +1,4 @@
-class Api::V1::StatusDisponibilitiesSerializer < Api::V1::ApplicationSerializer
+class Api::V1::StatusDisponibilitySerializer < Api::V1::ApplicationSerializer
     attributes  :id,
                 :PropertyInformation_id,
                 :status_property,

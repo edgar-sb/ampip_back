@@ -11,5 +11,4 @@ class Api::V1::UserInformationSerializer < Api::V1::ApplicationSerializer
   #     url: rails_blob_url(object.photo)
   #   }
   # end
-  end
 end 

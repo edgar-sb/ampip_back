@@ -1,8 +1,8 @@
 class Api::V1::StatusDisponibilitiesController < ApplicationController
 
     def index
-        statusDisponibilities = StatusDisponibilities.all
-        render json: statusDisponibilities, each_serializer: Api::V1::StatusDisponibilitiesSerializer
+        statusDisponibilities = StatusDisponibility.all
+        render json: statusDisponibilities, each_serializer: Api::V1::StatusDisponibilitySerializer
     end
 
     def show
@@ -10,7 +10,7 @@ class Api::V1::StatusDisponibilitiesController < ApplicationController
     end
 
     def create
-        newStatusDisponibilities = StatusDisponibilities.new permit_params
+        newStatusDisponibilities = StatusDisponibility.new permit_params
         if newStatusDisponibilities.save
             render json:{"message":"guardado"}
         else 
@@ -25,7 +25,7 @@ class Api::V1::StatusDisponibilitiesController < ApplicationController
     private
 
     def permit_params
-         params[:params].value(:id, :PropertyInformation_id, :status_property, :average_price, :use, :created_at, :updated_at)
+         params.require(:status_disponilities).permit(:id, :PropertyInformation_id, :status_property, :average_price, :use)
     end
 
 

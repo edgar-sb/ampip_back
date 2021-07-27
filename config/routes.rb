@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :user_informations
       resources :user_changes
+      resources :maps
       resources :users
       resources :test
       resources :contacts
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
       resources :property_users
       resources :propieties
       resources :status_disponibilities
-      resources :tenant_historys
+      resources :tenant_histories
       resources :tenant_users
       devise_scope :user do
         post "sign_up", to: "registrations#create"

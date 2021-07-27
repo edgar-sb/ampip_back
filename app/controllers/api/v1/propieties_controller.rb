@@ -1,8 +1,8 @@
-class Api::V1::PropietiesController < ApplicationSerializer
+class Api::V1::PropietiesController < ApplicationController
 
     def index 
-        propieties = Propieties.all
-        render json: propieties, each_serializer: Api::V1::PropietiesSerializer
+        propieties = Property.all
+        render json: propieties, each_serializer: Api::V1::PropertySerializer
     end 
 
     def show 
@@ -10,7 +10,7 @@ class Api::V1::PropietiesController < ApplicationSerializer
     end 
 
     def create
-        newPropieties = Propieties.new permit_params
+        newPropieties = Property.new permit_params
         if newPropieties.save
             render json:{"message":"guardado"}
         else
@@ -25,6 +25,6 @@ class Api::V1::PropietiesController < ApplicationSerializer
     private
 
     def permit_params
-        params[:params].value(:id, :Corporate_id, :property_catalog_id, :type, :created_at, :updated_at)
+        params.require(:propieties).permit(:id, :Corporate_id, :property_catalog_id, :type)
     end
 end
