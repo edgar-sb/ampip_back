@@ -16,7 +16,7 @@ class CreateUserInformations < ActiveRecord::Migration[5.2]
       t.string :municipality
       t.string :colony
       t.integer :postal_code_number
-      t.references :user_type_permision, foreign_key: true
+      t.references :user_role_permission, foreign_key: true
       t.integer :user_type
       t.timestamps
     end
