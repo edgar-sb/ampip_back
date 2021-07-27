@@ -1,5 +1,5 @@
 class Api::V1::UserInformationsController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def index
     user_info = UserInformation.all 

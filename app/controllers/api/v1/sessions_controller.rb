@@ -36,7 +36,7 @@ class Api::V1::SessionsController < ApplicationController
         messages: "Cannot get User",
         is_success: false,
         data: {}
-      }, status: :failure
+      }
     end
   end
 end
