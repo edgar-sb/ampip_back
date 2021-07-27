@@ -9,7 +9,6 @@ class CreateTenantUsers < ActiveRecord::Migration[6.1]
       t.integer :ID_DENUE
       t.integer :antiquity
       t.integer :superficie
-      t.references :tenant_history, null: false, foreign_key: true
       t.timestamps
     end
   end
