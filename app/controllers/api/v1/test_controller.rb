@@ -1,14 +1,14 @@
 class Api::V1::TestController < ApplicationController
 
     def index
-        dashboard = Dashboard::MainDashboard.new(rescue_params).call
-        render json:dashboard
+        dataUser = UserInformations::CreateUserInfo.new(rescue_params).call
+        render json:{"response":dataUser}
     end
 
     private 
 
     def rescue_params
-        params.require(:rescue_type).permit(:user_type, :id)
+        params.require(:user_info).permit(:id, :user_id, :full_name, :last_name, :address, :state, :office_address, :charge, :date_of_birth, :phone_office, :cel, :corporate_id, :status, :municipality, :colony, :postal_code_number, :user_type_permision_id, :user_type, :created_at, :updated_at)
     end
     #provado y listo 
     def corporateX
