@@ -13,30 +13,18 @@ module Dashboard
             type = @params[:user_type]
             user_information = rescue_user_information(@params[:id])[0]
             if type == "admin_ampip"
-                return {"developers":rescue_dev(0), "sponsors":rescue_sponsors(0), "user_information":user_information}
+                return {"developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0), "user_information":user_information}
             elsif type == "user_ampip"
-                return {"developers":rescue_dev(0), "sponsors":rescue_sponsors(0), "user_information":user_information}
+                return {"developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0), "user_information":user_information}
             elsif type == "admin_society"
-                return {"developers":rescue_dev(user_information), "user_information":user_information}
+                return {"developers":rescue_corporate(user_information), "user_information":user_information}
             end
         end
 
-        #rescata los o el patrocinador dependiendo de el requerimiento
-        def rescue_sponsors(id)
+        #rescata los o el desarrollador dependiendo de el requerimiento donde type  (0 => patrocinadores o 1 => desarrolladores)
+        def rescue_corporate(id, type = nil)
             if id == 0
-                return Corporate.where(corporate_type: 0)
-            else
-                if id == "Sin datos"
-                    return "Sin Patrocinador asignado"
-                else 
-                    return Corporate.where(id: id.corporate_id)
-                end    
-            end            
-        end
-        #rescata los o el desarrollador dependiendo de el requerimiento
-        def rescue_dev(id, type)
-            if id == 0
-                return Corporate.where(corporate_type: 1)
+                return Corporate.where(corporate_type: type)
             else
                 if id == "Sin datos"
                     return "Sin Desarrollador asignado"
