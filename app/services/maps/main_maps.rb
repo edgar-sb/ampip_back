@@ -9,23 +9,10 @@ module Maps
         def call
             if @params[:type] == "get"
                return getMaps
-            end 
+            end
         end
 
-        private 
-
-        def create
-
-
-
-
-
-
-
-
-
-            
-        end
+        private
 
         def getMaps
             map = Map.all
