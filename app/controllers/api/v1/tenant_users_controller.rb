@@ -11,7 +11,6 @@ class Api::V1::TenantUsersController < ApplicationController
 
     def create
         newTenantUser = TenantUser.new
-        render json:{"message":newTenantUser}
         if newTenantUser.save
             render json:{"message":"guardado"}
         else
