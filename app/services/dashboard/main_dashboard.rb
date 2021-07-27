@@ -5,19 +5,23 @@ module Dashboard
         end
   
         def call
-            return dashboard
+            type = @params[:user_type]
+            user_information = rescue_user_information(@params[:id])[0]
+            return dashboard(type,user_information)
         end
 
         private 
-        def dashboard
-            type = @params[:user_type]
-            user_information = rescue_user_information(@params[:id])[0]
+        def dashboard(type,user_information)
             if type == "admin_ampip"
-                return {"developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0), "user_information":user_information}
+                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information}
             elsif type == "user_ampip"
-                return {"developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0), "user_information":user_information}
+                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information}
             elsif type == "admin_society"
-                return {"developers":rescue_corporate(user_information), "user_information":user_information}
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information}
+            elsif type == "user_society"
+                debugger
+            elsif type == "admin_propiety"
+                debugger
             end
         end
 
