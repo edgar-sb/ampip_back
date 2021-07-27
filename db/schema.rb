@@ -113,10 +113,11 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
 
   create_table "property_users", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "industrial_park_id"
+    t.integer "property_id", null: false
     t.integer "type_property"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_property_users_on_property_id"
     t.index ["user_id"], name: "index_property_users_on_user_id"
   end
 
@@ -132,10 +133,11 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
 
   create_table "tenant_histories", force: :cascade do |t|
     t.integer "property_id", null: false
-    t.integer "tenant_user_id"
+    t.integer "tenant_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_id"], name: "index_tenant_histories_on_property_id"
+    t.index ["tenant_user_id"], name: "index_tenant_histories_on_tenant_user_id"
   end
 
   create_table "tenant_users", force: :cascade do |t|
@@ -147,10 +149,8 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.integer "ID_DENUE"
     t.integer "antiquity"
     t.integer "superficie"
-    t.integer "tenant_history_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["tenant_history_id"], name: "index_tenant_users_on_tenant_history_id"
   end
 
   create_table "user_changes", force: :cascade do |t|
@@ -227,10 +227,11 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   add_foreign_key "permissions", "user_rol_permissions"
   add_foreign_key "properties", "corporates"
   add_foreign_key "property_informations", "properties"
+  add_foreign_key "property_users", "properties"
   add_foreign_key "property_users", "users"
   add_foreign_key "status_disponibilities", "property_informations"
   add_foreign_key "tenant_histories", "properties"
-  add_foreign_key "tenant_users", "tenant_histories"
+  add_foreign_key "tenant_histories", "tenant_users"
   add_foreign_key "user_changes", "users"
   add_foreign_key "user_informations", "corporates"
   add_foreign_key "user_informations", "user_type_permisions"
