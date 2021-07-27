@@ -11,10 +11,13 @@ module Dashboard
         private 
         def dashboard
             type = @params[:user_type]
+            user_information = rescue_user_information(@params[:id])[0]
             if type == "admin_ampip"
-                return {"developers":rescue_dev(0), "sponsors":rescue_sponsors(0), "user_information":rescue_user_information(@params[:id])}
+                return {"developers":rescue_dev(0), "sponsors":rescue_sponsors(0), "user_information":user_information}
             elsif type == "user_ampip"
-                return {"developers":rescue_dev(0), "sponsors":rescue_sponsors(0), "user_information":rescue_user_information(@params[:id])}
+                return {"developers":rescue_dev(0), "sponsors":rescue_sponsors(0), "user_information":user_information}
+            elsif type == "admin_society"
+                return {"developers":rescue_dev(user_information), "user_information":user_information}
             end
         end
 
@@ -23,28 +26,33 @@ module Dashboard
             if id == 0
                 return Corporate.where(corporate_type: 0)
             else
-                return Corporate.where(id:id)
+                if id == "Sin datos"
+                    return "Sin Patrocinador asignado"
+                else 
+                    return Corporate.where(id: id.corporate_id)
+                end    
             end            
         end
-
         #rescata los o el desarrollador dependiendo de el requerimiento
-        def rescue_dev(id)
+        def rescue_dev(id, type)
             if id == 0
                 return Corporate.where(corporate_type: 1)
             else
-                return Corporate.where(id:id)
-            end            
+                if id == "Sin datos"
+                    return "Sin Desarrollador asignado"
+                else 
+                    return Corporate.where(id: id.corporate_id)
+                end    
+            end
         end
-
         #obtiene la informacion del usuario
         def rescue_user_information(id)
             @user = UserInformation.where(user_id:id)
             if @user != []
                 return @user
             else
-                return "Sin datos aun"
+                return ["Sin datos"]
             end
-            
         end      
     end 
 end
