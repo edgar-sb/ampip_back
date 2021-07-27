@@ -25,6 +25,6 @@ class Api::V1::PropietiesController < ApplicationController
     private
 
     def permit_params
-        params.require(:propieties).permit(:id, :Corporate_id, :property_catalog_id, :type)
+        params.require(:propieties).permit(:id, :corporate_id, :property_catalog_id, :type)
     end
 end
