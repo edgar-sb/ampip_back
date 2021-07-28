@@ -18,7 +18,7 @@ class Api::V1::SessionsController < ApplicationController
         messages: "Signed In Failed - Unauthorized",
         is_success: false,
         data: {}
-      }, status: :unauthorized
+      }, status: :ok
     end
   end
 
