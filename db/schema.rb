@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   end
 
   create_table "status_disponibilities", force: :cascade do |t|
-    t.integer "property_information_id", null: false
+    t.integer "property_information_id"
     t.boolean "status_property"
     t.decimal "average_price"
     t.integer "use"

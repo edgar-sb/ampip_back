@@ -11,7 +11,7 @@ class Api::V1::ContactsController < ApplicationController
 
     def create
         newContact = Contact.new permit_params
-        if newContact.save
+        if newContact.save 
             render json:{"message":"guardado"}
         else
             render json:{"message":"error"}
@@ -25,7 +25,7 @@ class Api::V1::ContactsController < ApplicationController
     private
 
     def permit_params
-         params.require(:contact).permit(:id, :property_information_id, :name, :phone_number, :website, :created_at, :updated_at)
+         params.require(:contact).permit(:property_information_id, :name, :phone_number, :website)
     end
 
 end
