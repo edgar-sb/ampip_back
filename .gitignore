@@ -51,3 +51,5 @@ Thumbs.db
 
 /vendor/bundle
 /config/database.yml
+Gemfile
+Gemfile.lock
