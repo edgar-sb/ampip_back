@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :status_disponibilities
       resources :tenant_histories
       resources :tenant_users
+      resources :dashboard
       devise_scope :user do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"

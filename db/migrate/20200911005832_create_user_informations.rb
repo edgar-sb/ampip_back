@@ -11,12 +11,12 @@ class CreateUserInformations < ActiveRecord::Migration[5.2]
       t.datetime :date_of_birth
       t.string :phone_office
       t.integer :cel
-      #t.references :corporate, foreign_key: true
+      t.references :corporate, foreign_key: true
       t.boolean :status
       t.string :municipality
       t.string :colony
       t.integer :postal_code_number
-      #t.references :user_role_permission, foreign_key: true
+      t.references :user_role_permission, foreign_key: true
       t.integer :user_type
       t.timestamps
     end

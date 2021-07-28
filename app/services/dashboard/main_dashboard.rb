@@ -5,19 +5,24 @@ module Dashboard
         end
   
         def call
-            type = @params[:user_type]
-            user_information = rescue_user_information(@params[:id])[0]
-            return dashboard(type,user_information)
+            if @params != 0
+                type = @params[:user_type]
+                user_information = rescue_user_information(@params[:id])[0]
+                user_permissions = Permissions::RescuePermission.new(user_information[:user_role_permission_id]).call
+                return dashboard(type, user_information, user_permissions)
+            else
+                return "Token invalido"
+            end
         end
 
         private 
-        def dashboard(type,user_information)
+        def dashboard(type,user_information, user_permissions)
             if type == "admin_ampip"
-                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information}
+                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions}
             elsif type == "user_ampip"
-                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information}
+                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions}
             elsif type == "admin_society"
-                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information}
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions}
             elsif type == "user_society"
                 debugger
             elsif type == "admin_propiety"
