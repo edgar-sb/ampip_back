@@ -48,8 +48,7 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+*.yml
 
-vendor/bundle
+/vendor/bundle
 config/database.yml
-./Gemfile
-./Gemfile.lock
