@@ -11,6 +11,7 @@ class Api::V1::CorporateInformationsController < ApplicationController
 
     def create 
         newCorporateInformation = CorporateInformation.new permit_params
+        debugger
         if newCorporateInformation.save
             render json:{"message":"guardado"}
         else 

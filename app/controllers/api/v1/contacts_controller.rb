@@ -25,7 +25,7 @@ class Api::V1::ContactsController < ApplicationController
     private
 
     def permit_params
-         params.require(:contact).permit(:id, :name, :phone_number, :website, :property_information_id)
+         params.require(:contact).permit(:id, :property_information_id, :name, :phone_number, :website, :created_at, :updated_at)
     end
 
 end
