@@ -11,6 +11,8 @@ module Dashboard
                 if user_information != 0
                     user_permissions = Permissions::RescuePermission.new(user_information[:user_role_permission_id]).call
                     return dashboard(type, user_information, user_permissions)
+                else
+                    return "Sin informacion de usuario"
                 end
             else
                 return "Token invalido"
