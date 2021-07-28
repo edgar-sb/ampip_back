@@ -1,9 +1,5 @@
 class Api::V1::UserInformationsController < ApplicationController
-<<<<<<< HEAD
-  #before_action :authenticate_user!
-=======
   before_action :session_user
->>>>>>> feature/services
 
   def index
     user_info = UserInformation.all 
@@ -46,7 +42,7 @@ class Api::V1::UserInformationsController < ApplicationController
   end
 
   private
-   
+
   def session_user
     @current_user=User.find_by(authentication_token:params[:authentication_token])
   end
