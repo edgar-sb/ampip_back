@@ -49,7 +49,7 @@ Thumbs.db
 *.mov
 *.wmv
 
-/vendor/bundle
-/config/database.yml
-Gemfile
-Gemfile.lock
+vendor/bundle
+config/database.yml
+./Gemfile
+./Gemfile.lock
