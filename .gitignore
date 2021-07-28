@@ -49,7 +49,3 @@ Thumbs.db
 *.mov
 *.wmv
 *.yml
-
-/vendor/bundle
-config/database.yml
-tmp/pids/server.pid
