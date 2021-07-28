@@ -180,13 +180,13 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.string "municipality"
     t.string "colony"
     t.integer "postal_code_number"
-    t.integer "user_type_permision_id"
+    t.integer "user_role_permission_id"
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["corporate_id"], name: "index_user_informations_on_corporate_id"
     t.index ["user_id"], name: "index_user_informations_on_user_id"
-    t.index ["user_type_permision_id"], name: "index_user_informations_on_user_type_permision_id"
+    t.index ["user_role_permission_id"], name: "index_user_informations_on_user_role_permission_id"
   end
 
   create_table "user_role_permissions", force: :cascade do |t|
@@ -234,7 +234,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   add_foreign_key "tenant_histories", "tenant_users"
   add_foreign_key "user_changes", "users"
   add_foreign_key "user_informations", "corporates"
-  add_foreign_key "user_informations", "user_type_permisions"
+  add_foreign_key "user_informations", "user_role_permissions"
   add_foreign_key "user_informations", "users"
   add_foreign_key "user_role_permissions", "user_rols"
 end
