@@ -52,4 +52,4 @@ Thumbs.db
 
 /vendor/bundle
 config/database.yml
-tmp/pids/.keep
+tmp/pids/server.pid
