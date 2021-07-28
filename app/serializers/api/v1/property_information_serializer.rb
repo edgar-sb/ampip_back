@@ -1,6 +1,6 @@
 class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
     attributes  :id,
-                :Property_id,
+                :property_id,
                 :name,
                 :type,
                 :superficie,

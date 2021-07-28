@@ -1,8 +1,8 @@
 class Api::V1::PropertyInformationsController < ApplicationController
 
     def index 
-        propertyinformations = PropertyInformation.all
-        render json: propertyinformations, each_serializer: Api::V1::PropertyInformationSerializer
+        propertyInformations = PropertyInformation.all
+        render json: propertyInformations, each_serializer: Api::V1::PropertyInformationSerializer
     end
 
     def show
