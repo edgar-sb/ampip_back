@@ -25,7 +25,7 @@ class Api::V1::PermissionsController < ApplicationController
     private 
 
     def permit_params
-        params.require(:permission).permit(:id, :user_rol_permission_id, :name)
+        params.require(:permission).permit(:id, :user_rol_permission, :name)
     end
 
 end

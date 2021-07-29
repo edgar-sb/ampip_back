@@ -11,6 +11,7 @@ class Api::V1::UserInformationsController < ApplicationController
     else
       render json:{"message":"error"}
    end
+    
   end
   private
   def session_user

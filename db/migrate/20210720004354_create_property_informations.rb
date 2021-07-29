@@ -25,6 +25,7 @@ class CreatePropertyInformations < ActiveRecord::Migration[6.1]
       t.string :municipality
       t.string :state
       t.integer :status
+      t.references :status_disponibilities, null:false, foreign_key: true
 
       t.timestamps
     end
