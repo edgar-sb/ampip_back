@@ -1,7 +1,8 @@
-class Api::V1::ContactController < ApplicationController
+class Api::V1::ContactsController < ApplicationController
 
     def index
-        render json:{"Message":"Hello"}
+        contacts = Contact.all
+        render json: contacts, each_serializer: Api::V1::ContactSerializer
     end
 
     def show
@@ -10,7 +11,7 @@ class Api::V1::ContactController < ApplicationController
 
     def create
         newContact = Contact.new permit_params
-        if newContact.save
+        if newContact.save 
             render json:{"message":"guardado"}
         else
             render json:{"message":"error"}
@@ -24,7 +25,7 @@ class Api::V1::ContactController < ApplicationController
     private
 
     def permit_params
-         params[:params].value(:id, :name, :phone_number, :website, :PropertyInformation_id)
+         params.require(:contact).permit(:property_information_id, :name, :phone_number, :website)
     end
 
 end
