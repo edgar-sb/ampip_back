@@ -105,9 +105,11 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.string "municipality"
     t.string "state"
     t.integer "status"
+    t.integer "status_disponibilities_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_id"], name: "index_property_informations_on_property_id"
+    t.index ["status_disponibilities_id"], name: "index_property_informations_on_status_disponibilities_id"
   end
 
   create_table "property_users", force: :cascade do |t|
@@ -121,13 +123,11 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   end
 
   create_table "status_disponibilities", force: :cascade do |t|
-    t.integer "property_information_id", null: false
     t.boolean "status_property"
     t.decimal "average_price"
     t.integer "use"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["property_information_id"], name: "index_status_disponibilities_on_property_information_id"
   end
 
   create_table "tenant_histories", force: :cascade do |t|
@@ -226,9 +226,9 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   add_foreign_key "permissions", "user_rol_permissions"
   add_foreign_key "properties", "corporates"
   add_foreign_key "property_informations", "properties"
+  add_foreign_key "property_informations", "status_disponibilities", column: "status_disponibilities_id"
   add_foreign_key "property_users", "properties"
   add_foreign_key "property_users", "users"
-  add_foreign_key "status_disponibilities", "property_informations"
   add_foreign_key "tenant_histories", "properties"
   add_foreign_key "tenant_histories", "tenant_users"
   add_foreign_key "user_changes", "users"
