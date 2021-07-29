@@ -14,7 +14,7 @@ class Api::V1::StatusDisponibilitiesController < ApplicationController
         if newStatusDisponibilities.save
             render json:{"message":"guardado"}
         else 
-            render json:{"message":"error"}
+            render json:{"message":newStatusDisponibilities.errors.full_messages}
         end 
     end
 
@@ -25,7 +25,7 @@ class Api::V1::StatusDisponibilitiesController < ApplicationController
     private
 
     def permit_params
-         params.require(:status_disponilities).permit(:id, :PropertyInformation_id, :status_property, :average_price, :use)
+         params.require(:status_disponilities).permit(:id, :status_property, :average_price, :use)
     end
 
 
