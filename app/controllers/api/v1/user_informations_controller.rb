@@ -18,6 +18,6 @@ class Api::V1::UserInformationsController < ApplicationController
     @current_user=User.find_by(authentication_token:params[:authentication_token])
   end
   def permit_params
-    params.require(:information).permit(:id, :user_id, :full_name, :last_name, :address, :state, :office_address, :charge, :date_of_birth, :phone_office, :cel, :corporate_id, :status, :municipality, :colony, :postal_code_number, :user_role_permission, :user_type, :created_at, :updated_at)
+    params.require(:information).permit(:user_id, :full_name, :last_name, :address, :state, :office_address, :charge, :date_of_birth, :phone_office, :cel, :corporate_id, :status, :municipality, :colony, :postal_code_number, :user_role_permission, :user_type, :created_at, :updated_at)
   end
 end

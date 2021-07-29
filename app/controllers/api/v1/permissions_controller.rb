@@ -14,7 +14,7 @@ class Api::V1::PermissionsController < ApplicationController
         if newPermission.save
             render json:{"message":"guardado"}
         else
-            render json:{"message":"error"}
+            render json:{"message":newPermission.errors.full_messages}
         end
     end
 
@@ -25,7 +25,7 @@ class Api::V1::PermissionsController < ApplicationController
     private 
 
     def permit_params
-        params.require(:permission).permit(:id, :user_rol_permission, :name)
+        params.require(:permission).permit(:user_role_permission_id, :name)
     end
 
 end

@@ -9,7 +9,6 @@ class Api::V1::TenantUserSerializer < Api::V1::ApplicationSerializer
                 :ID_DENUE, 
                 :antiquity, 
                 :superficie, 
-                :TenantHistory_id, 
                 :created_at, 
                 :updated_at
 

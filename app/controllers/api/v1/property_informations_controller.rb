@@ -25,7 +25,7 @@ class Api::V1::PropertyInformationsController < ApplicationController
     private 
 
     def permit_params
-        params.require(:property_information).permit(:property_id, :name, :type, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status)
+        params.require(:property_information).permit(:property_id, :name, :type, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :status_disponibilities_id)
     end
 
 end
