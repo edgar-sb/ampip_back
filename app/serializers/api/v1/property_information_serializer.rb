@@ -2,7 +2,7 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
     attributes  :id,
                 :property_id,
                 :name,
-                :type,
+                :tipo,
                 :superficie,
                 :address,
                 :english_name,
@@ -24,6 +24,7 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
                 :municipality,
                 :state,
                 :status,
+                :status_disponibilities_id,
                 :created_at,
                 :updated_at
 end

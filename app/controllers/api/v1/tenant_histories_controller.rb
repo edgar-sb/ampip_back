@@ -14,7 +14,7 @@ class Api::V1::TenantHistoriesController < ApplicationController
         if newTenantHistories.save
             render json:{"message":"guardado"}
         else 
-            render json:{"message":"error"}
+            render json:{"message":newTenantHistories.errors.full_messages}
         end  
     end
 

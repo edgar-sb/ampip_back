@@ -23,7 +23,7 @@ module Permissions
         
         def rescue_user_role_permission(id)
             permission = []
-            userRolePermision = UserRolePermission.where(user_rol_id:id)
+            userRolePermision = UserRolPermission.where(user_rol_id:id)
             for i in userRolePermision
                 permissionWhitName = []
                 permissionWhitName.append("permiso": Permission.where(id: i.permission_id)[0].name, "read": i.read, "write": i.write)

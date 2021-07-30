@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       resources :tenant_histories
       resources :tenant_users
       resources :dashboard
+      resources :user_rol
+      resources :user_rol_permission
       devise_scope :user do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"

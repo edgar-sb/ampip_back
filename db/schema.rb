@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_20_004659) do
+ActiveRecord::Schema.define(version: 2021_07_29_205658) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "property_information_id", null: false
@@ -65,16 +65,14 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   end
 
   create_table "permissions", force: :cascade do |t|
-    t.integer "user_rol_permission_id", null: false
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_rol_permission_id"], name: "index_permissions_on_user_rol_permission_id"
   end
 
   create_table "properties", force: :cascade do |t|
     t.integer "corporate_id", null: false
-    t.integer "type"
+    t.integer "tipo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["corporate_id"], name: "index_properties_on_corporate_id"
@@ -83,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   create_table "property_informations", force: :cascade do |t|
     t.integer "property_id", null: false
     t.string "name"
-    t.string "type"
+    t.string "tipo"
     t.integer "superficie"
     t.string "address"
     t.string "english_name"
@@ -179,23 +177,24 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
     t.string "municipality"
     t.string "colony"
     t.integer "postal_code_number"
-    t.integer "user_role_permission_id"
+    t.integer "user_rols_id"
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["corporate_id"], name: "index_user_informations_on_corporate_id"
     t.index ["user_id"], name: "index_user_informations_on_user_id"
-    t.index ["user_role_permission_id"], name: "index_user_informations_on_user_role_permission_id"
+    t.index ["user_rols_id"], name: "index_user_informations_on_user_rols_id"
   end
 
-  create_table "user_role_permissions", force: :cascade do |t|
-    t.integer "permission_id"
+  create_table "user_rol_permissions", force: :cascade do |t|
+    t.integer "permission_id", null: false
+    t.integer "user_rol_id", null: false
     t.boolean "read"
     t.boolean "write"
-    t.integer "user_rol_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_rol_id"], name: "index_user_role_permissions_on_user_rol_id"
+    t.index ["permission_id"], name: "index_user_rol_permissions_on_permission_id"
+    t.index ["user_rol_id"], name: "index_user_rol_permissions_on_user_rol_id"
   end
 
   create_table "user_rols", force: :cascade do |t|
@@ -223,7 +222,6 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
 
   add_foreign_key "contacts", "property_informations"
   add_foreign_key "corporate_informations", "corporates"
-  add_foreign_key "permissions", "user_rol_permissions"
   add_foreign_key "properties", "corporates"
   add_foreign_key "property_informations", "properties"
   add_foreign_key "property_informations", "status_disponibilities", column: "status_disponibilities_id"
@@ -233,7 +231,8 @@ ActiveRecord::Schema.define(version: 2021_07_20_004659) do
   add_foreign_key "tenant_histories", "tenant_users"
   add_foreign_key "user_changes", "users"
   add_foreign_key "user_informations", "corporates"
-  add_foreign_key "user_informations", "user_role_permissions"
+  add_foreign_key "user_informations", "user_rols", column: "user_rols_id"
   add_foreign_key "user_informations", "users"
-  add_foreign_key "user_role_permissions", "user_rols"
+  add_foreign_key "user_rol_permissions", "permissions"
+  add_foreign_key "user_rol_permissions", "user_rols"
 end

@@ -9,8 +9,9 @@ module Dashboard
                 type = @params[:user_type]
                 user_information = rescue_user_information(@params[:id])[0]
                 if user_information != 0
-                    user_permissions = Permissions::RescuePermission.new(user_information[:user_role_permission_id]).call
+                    user_permissions = Permissions::RescuePermission.new(user_information[:user_rols_id]).call
                     return dashboard(type, user_information, user_permissions)
+                    #return user_information
                 else
                     return "Sin informacion de usuario"
                 end

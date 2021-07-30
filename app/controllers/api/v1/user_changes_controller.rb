@@ -25,6 +25,6 @@ class Api::V1::UserChangesController < ApplicationController
     private
 
     def permit_params
-         params.require(:user_changes).permit( :id, :previews_value, :next_value)
+         params.require(:user_changes).permit(:previews_value, :next_value, :message, :email, :user_id)
     end  
 end

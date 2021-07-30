@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+movies = Permission.create!([{ name: 'Crear Propiedades' }, { name: 'Editar Propiedades' }, { name: 'Ver Propiedades' }, { name: 'Crear Usuarios' }, { name: 'Editar Usuarios' }, { name: 'Ver Usuarios' }, { name: 'Ver Micrositios' }, { name: 'Crear Inquilinos' },  { name: 'Ver Inquilinos' }, { name: 'Editar Inquilino' }, { name: 'Aprobar Cambios' }, { name: 'Solicitar Cambios' }])

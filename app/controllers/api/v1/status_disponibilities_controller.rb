@@ -25,7 +25,7 @@ class Api::V1::StatusDisponibilitiesController < ApplicationController
     private
 
     def permit_params
-         params.require(:status_disponilities).permit(:id, :status_property, :average_price, :use)
+         params.require(:status_disponibilities).permit(:status_property, :average_price, :use)
     end
 
 

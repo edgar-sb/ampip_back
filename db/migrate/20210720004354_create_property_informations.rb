@@ -3,7 +3,7 @@ class CreatePropertyInformations < ActiveRecord::Migration[6.1]
     create_table :property_informations do |t|
       t.references :property, null: false, foreign_key: true
       t.string :name
-      t.string :type
+      t.string :tipo
       t.integer :superficie
       t.string :address
       t.string :english_name
