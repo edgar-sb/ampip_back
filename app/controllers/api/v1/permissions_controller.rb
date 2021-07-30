@@ -16,16 +16,24 @@ class Api::V1::PermissionsController < ApplicationController
         else
             render json:{"message":newPermission.errors.full_messages}
         end
-    end
 
-    def destroy
-
+        #newUserRol = UserRol.new pemit_user_rol
+        #if newUserRol.save
+        #    render json:{"c":"c"}
+        # else
+        #    render json:{"message":newUserRol.errors.full_messages}
+        #end
     end
 
     private 
 
     def permit_params
-        params.require(:permission).permit(:user_role_permission_id, :name)
+        params.require(:permission).permit(:name)
+    end
+
+
+    def pemit_user_rol
+        params.require(:permission).permit(:name, :children_id, :parent_id, :user_information_id)
     end
 
 end
