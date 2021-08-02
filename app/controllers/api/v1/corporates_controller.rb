@@ -19,7 +19,7 @@ class Api::V1::CorporatesController < ApplicationController
             end
             #permissionsRescue = Permissions::OauthToken.new(@current_user, "Usuarios").rescue_user_permission_read
         else
-            render json:{"message":"No tienes permisos para esta accion"}
+            render json:{"message":false}
         end
     end
 
