@@ -16,7 +16,9 @@ class CreateCorporates < ActiveRecord::Migration[6.1]
       t.datetime :downt_date
       t.integer :corporate_type
       t.boolean :status
-
+      t.text :avatar_Uno
+      t.text :avatar_Dos
+      t.text :avatar_Tres
       t.timestamps
     end
   end

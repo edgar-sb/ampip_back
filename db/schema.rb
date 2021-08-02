@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 2021_07_29_205658) do
     t.datetime "downt_date"
     t.integer "corporate_type"
     t.boolean "status"
+    t.text "avatar_Uno"
+    t.text "avatar_Dos"
+    t.text "avatar_Tres"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -179,6 +182,9 @@ ActiveRecord::Schema.define(version: 2021_07_29_205658) do
     t.integer "postal_code_number"
     t.integer "user_rols_id"
     t.integer "user_type"
+    t.datetime "login_date"
+    t.datetime "logout_date"
+    t.text "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["corporate_id"], name: "index_user_informations_on_corporate_id"

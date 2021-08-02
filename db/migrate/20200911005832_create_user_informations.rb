@@ -18,6 +18,9 @@ class CreateUserInformations < ActiveRecord::Migration[5.2]
       t.integer :postal_code_number
       t.references :user_rols, foreign_key: true
       t.integer :user_type
+      t.timestamp :login_date
+      t.timestamp :logout_date
+      t.text :avatar
       t.timestamps
     end
   end
