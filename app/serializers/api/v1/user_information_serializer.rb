@@ -3,5 +3,8 @@ class Api::V1::UserInformationSerializer < Api::V1::ApplicationSerializer
               :user_id,
               :full_name,
               :last_name,
-              :address
+              :address,
+              :login_date,
+              :logout_date,
+              :avatar
 end

@@ -15,5 +15,9 @@ class Api::V1::CorporateSerializer < Api::V1::ApplicationSerializer
                 :downt_date,
                 :corporate_type,
                 :status,
-                :created_at
+                :created_at,
+                :avatar_Uno,
+                :avatar_Dos,
+                :avatar_Tres
+                
 end

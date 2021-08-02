@@ -1,5 +1,4 @@
 class Api::V1::UserRolPermissionController < ApplicationController
-    
     def index
         maps = UserRolPermission.all
         render json: maps, each_serializer: Api::V1::UserRolPermissionSerializer
@@ -19,5 +18,4 @@ class Api::V1::UserRolPermissionController < ApplicationController
     def permit_params 
         params.require(:user_rol).permit(:permission_id,:user_rol_id,:read,:write)
     end
-
 end

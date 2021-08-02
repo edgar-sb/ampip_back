@@ -5,7 +5,7 @@ class Api::V1::DashboardController < ApplicationController
         render json:{"message":dashboard}
     end
 
-    private
+    private 
     def session_user
         userConsult=User.find_by(authentication_token:request.headers["Authorization"])
         if userConsult != nil
