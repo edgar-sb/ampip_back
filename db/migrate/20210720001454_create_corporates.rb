@@ -15,7 +15,7 @@ class CreateCorporates < ActiveRecord::Migration[6.1]
       t.decimal :next_anual_inv
       t.datetime :downt_date
       t.integer :corporate_type
-      t.boolean :status
+      t.boolean :statusr
 
       t.timestamps
     end
