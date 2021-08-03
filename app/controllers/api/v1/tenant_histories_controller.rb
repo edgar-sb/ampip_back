@@ -14,7 +14,7 @@ class Api::V1::TenantHistoriesController < ApplicationController
         if newTenantHistories.save
             render json:{"message":"guardado"}
         else 
-            render json:{"message":"error"}
+            render json:{"message":newTenantHistories.errors.full_messages}
         end  
     end
 
@@ -25,7 +25,7 @@ class Api::V1::TenantHistoriesController < ApplicationController
     private
 
     def permit_params
-         params.require(:tenant_histories).permit(:Property_id, :tenant_user_id)
+         params.require(:tenant_histories).permit(:property_id, :tenant_user_id)
     end
 
 

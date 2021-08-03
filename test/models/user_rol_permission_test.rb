@@ -1,6 +1,6 @@
 require "test_helper"
 
-class UserRolePermissionTest < ActiveSupport::TestCase
+class UserRolPermissionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

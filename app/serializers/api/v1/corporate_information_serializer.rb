@@ -6,7 +6,7 @@ class Api::V1::CorporateInformationSerializer < Api::V1::ApplicationSerializer
                 :social_media_inst,
                 :social_media_link,
                 :social_media_web,
-                :Corporate_id,
+                :corporate_id,
                 :created_at,
                 :updated_at
             

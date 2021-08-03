@@ -25,7 +25,7 @@ class Api::V1::CorporateInformationsController < ApplicationController
     private
 
     def permit_params
-        params.require(:corporateInformation).permit(:id, :rfc, :social_media_tw, :social_media_fb, :social_media_inst, :social_media_link, :social_media_web, :Corporate_id)
+        params.require(:corporate_information).permit(:id, :rfc, :social_media_tw, :social_media_fb, :social_media_inst, :social_media_link, :social_media_web, :corporate_id)
     end
 
 end

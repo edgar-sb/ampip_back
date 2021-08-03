@@ -25,7 +25,7 @@ class Api::V1::PropertyUsersController < ApplicationController
     private
 
     def permit_params
-        params.require(:property_user).permit(:id, :user_id, :industrial_park_id, :type_property)
+        params.require(:property_user).permit(:id, :user_id, :property_id, :type_property)
     end
 
 end
